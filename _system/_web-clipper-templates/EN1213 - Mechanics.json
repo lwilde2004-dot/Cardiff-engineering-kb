@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "0.1.0",
+  "id": "en1213-mechanics-clip",
+  "name": "EN1213 — Mechanics",
+  "behavior": "create",
+  "noteContentFormat": "# {{title}}\n\n> [!info] Source\n> **URL:** {{url}}\n> **Clipped:** {{date:YYYY-MM-DD}}\n> **Author:** {{author}}\n\n## Summary\n\n{{description}}\n\n---\n\n{{content}}\n\n---\n\n## Highlights\n\n{{highlights}}",
+  "properties": [
+    { "name": "type",    "value": "web-clip",           "type": "text" },
+    { "name": "module",  "value": "EN1213",             "type": "text" },
+    { "name": "topic",   "value": "mechanics",          "type": "text" },
+    { "name": "source",  "value": "{{url}}",            "type": "text" },
+    { "name": "author",  "value": "{{author}}",         "type": "text" },
+    { "name": "clipped", "value": "{{date:YYYY-MM-DD}}","type": "date"  },
+    { "name": "tags",    "value": "web-clip, unprocessed, mechanics", "type": "text" }
+  ],
+  "triggers": [],
+  "vault": "Claude Uni Brain",
+  "outputPathFormat": "_web-clips/mechanics/{{date:YYYY-MM-DD}} - {{title}}"
+}

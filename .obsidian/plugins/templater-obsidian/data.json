@@ -1,0 +1,23 @@
+{
+  "templates_folder": "_system/_templates",
+  "auto_jump_to_cursor": true,
+  "trigger_on_file_creation": false,
+  "enable_system_commands": false,
+  "shell_path": "",
+  "template_pairs": [],
+  "enable_folder_templates": true,
+  "folder_templates": [
+    {
+      "folder": "EN1213/thermodynamics-fluid-mechanics/wiki",
+      "template": "_system/_templates/New Wiki Article.md"
+    },
+    {
+      "folder": "EN1213/mechanics/wiki",
+      "template": "_system/_templates/New Wiki Article.md"
+    },
+    {
+      "folder": "EN1213/manufacturing-materials/wiki",
+      "template": "_system/_templates/New Wiki Article.md"
+    }
+  ]
+}

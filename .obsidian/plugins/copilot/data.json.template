@@ -1,0 +1,17 @@
+{
+  "anthropicApiKey": "YOUR_ANTHROPIC_API_KEY",
+  "openRouterAiApiKey": "YOUR_OPENROUTER_API_KEY",
+  "defaultModelKey": "claude-sonnet-4-6-anthropic",
+  "embeddingModelKey": "openai/text-embedding-3-small|openrouterai",
+  "temperature": 0.2,
+  "maxTokens": 16000,
+  "contextTurns": 15,
+  "userSystemPrompt": "You are a study assistant for a Cardiff University engineering student. The knowledge base contains lecture notes and wiki articles for EN1213/EN1214 modules covering: Thermodynamics, Fluid Mechanics, Statics, Solid Mechanics, Dynamics, Manufacturing Processes, Materials Science and Testing. When answering questions prioritise content from the vault. Be concise and precise — this is an engineering context, equations and units matter. For practice questions, follow Cardiff exam style: state given information, show method, give numerical answer with units.",
+  "stream": true,
+  "defaultSaveFolder": "_system/_chat-logs",
+  "autosaveChat": false,
+  "chainType": "vault_qa",
+  "options": { "includeActiveNote": true },
+  "indexVaultToVectorStore": "ON_STARTUP",
+  "qaExclusions": "_system,assets,.obsidian,copilot"
+}

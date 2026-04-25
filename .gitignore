@@ -1,0 +1,48 @@
+# ── Lecture source files (copyright — never commit) ──────────────────────────
+EN1213/**/raw/**/*.pdf
+EN1213/**/raw/**/*.pptx
+EN1213/**/raw/**/*.ppt
+EN1213/**/raw/**/*.docx
+EN1213/**/raw/**/*.doc
+EN1213/**/raw/**/*.xlsx
+EN1213/**/raw/**/*.xls
+EN1213/**/raw/**/*.epub
+EN1213/**/raw/**/*.html
+
+# Converted lecture .md files (derived from source files)
+EN1213/**/raw/**/*.md
+
+# Extracted slide images
+**/assets/
+
+# ── Personal content ──────────────────────────────────────────────────────────
+_web-clips/*
+!_web-clips/.gitkeep
+_web-clips/unsorted/
+_web-clips/thermodynamics/
+_web-clips/fluid-mechanics/
+_web-clips/mechanics/
+_web-clips/manufacturing-materials/
+_web-clips/maths/
+
+_system/_chat-logs/*
+!_system/_chat-logs/.gitkeep
+
+_inbox/*
+!_inbox/.gitkeep
+
+# ── API keys — never commit ───────────────────────────────────────────────────
+.obsidian/plugins/copilot/data.json
+
+# ── Watcher runtime files ─────────────────────────────────────────────────────
+.watcher.pid
+.watcher.log
+
+# ── macOS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+**/.DS_Store
+
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
