@@ -94,6 +94,15 @@ K depends on geometry and is found from charts. Stress concentrations are critic
 
 ---
 
+
+---
+
+## Key Diagrams
+
+![[EN1213/mechanics/raw/solid-mechanics/assets/EN1213 - Solid Mechanics Axial Loading - Pearson/slide3-img5.png]]
+
+![[EN1213/mechanics/raw/solid-mechanics/assets/EN1213 - Solid Mechanics Axial Loading - Pearson/slide3-img8.png]]
+
 ## Links
 
 - [[EN1213/mechanics/wiki/solid-mechanics/torsion-and-shear|Torsion and Shear Stress]]

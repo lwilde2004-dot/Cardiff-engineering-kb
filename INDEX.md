@@ -1,10 +1,25 @@
 ---
-tags: [EN1213]
+tags: [EN1213, EN1211]
 ---
 
 # Cardiff University Knowledge Base
 
 Personal AI-assisted knowledge base for Cardiff University engineering. Drop lecture files into a subject's `raw/` folder, then ask Claude to process them into the wiki.
+
+---
+
+## EN1211 — Engineering Maths and Computation
+
+| Topic | Wiki |
+|---|---|
+| Differentiation, Integration, Applications of Integration | [[EN1211/wiki/INDEX\|EN1211 Wiki Index]] |
+| Differential Equations, Partial Differentiation, Series | ↑ |
+| Complex Numbers, Matrices, Vectors, Probability & Statistics | ↑ |
+
+```
+EN1211/
+  raw/topic/   wiki/topic/   outputs/   flashcards/
+```
 
 ---
 
@@ -38,6 +53,7 @@ EN1213/
 
 | Module | Index |
 |---|---|
+| EN1211 — Engineering Maths | [[_modules/EN1211]] |
 | EN1213 / EN2103 — ThermoFluids | [[_modules/EN1213]] |
 
 ---
@@ -77,3 +93,10 @@ bash watch.sh --stop  # stop
 
 **Monthly health check:**
 > "Review `EN1213/thermodynamics-fluid-mechanics/wiki/`. Flag contradictions, missing topics, and suggest 3 new articles."
+
+**Generate flashcards:**
+> "Make 10 flashcards for thermodynamics — cover the First Law, enthalpy, and steam cycles."
+
+**Quiz session:**
+> "Quiz me on fluid mechanics flashcards."
+> "Flashcard session — statics, Core cards only."

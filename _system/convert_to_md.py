@@ -19,7 +19,9 @@ def convert_pptx(path):
     from pptx.enum.shapes import MSO_SHAPE_TYPE
 
     prs = Presentation(path)
-    assets_dir = os.path.join(os.path.dirname(path), "assets")
+    file_stem = os.path.splitext(os.path.basename(path))[0]
+    # Each source file gets its own subfolder to avoid name collisions
+    assets_dir = os.path.join(os.path.dirname(path), "assets", file_stem)
     slides = []
 
     for i, slide in enumerate(prs.slides, 1):
@@ -44,7 +46,7 @@ def convert_pptx(path):
                     img_path = os.path.join(assets_dir, img_name)
                     with open(img_path, "wb") as f:
                         f.write(image.blob)
-                    images.append(f"![[assets/{img_name}]]")
+                    images.append(f"![[assets/{file_stem}/{img_name}]]")
                 except Exception:
                     pass
 
@@ -63,12 +65,37 @@ def convert_pptx(path):
 def convert_pdf(path):
     try:
         import fitz  # pymupdf
+        file_stem = os.path.splitext(os.path.basename(path))[0]
+        assets_dir = os.path.join(os.path.dirname(path), "assets", file_stem)
         doc = fitz.open(path)
         pages = []
         for i, page in enumerate(doc, 1):
             text = page.get_text("text").strip()
+            images = []
+            # Extract embedded images
+            for img_index, img in enumerate(page.get_images(), 1):
+                try:
+                    xref = img[0]
+                    base_image = doc.extract_image(xref)
+                    image_bytes = base_image["image"]
+                    image_ext = base_image["ext"]
+                    # Skip tiny images (icons, decorations) — min 5KB
+                    if len(image_bytes) < 5120:
+                        continue
+                    img_name = f"page{i}-img{img_index}.{image_ext}"
+                    os.makedirs(assets_dir, exist_ok=True)
+                    with open(os.path.join(assets_dir, img_name), "wb") as f:
+                        f.write(image_bytes)
+                    images.append(f"![[assets/{file_stem}/{img_name}]]")
+                except Exception:
+                    pass
+            parts = []
             if text:
-                pages.append(f"## Page {i}\n\n{text}")
+                parts.append(text)
+            if images:
+                parts.append("\n".join(images))
+            if parts:
+                pages.append(f"## Page {i}\n\n" + "\n\n".join(parts))
         doc.close()
         return "\n\n---\n\n".join(pages)
     except Exception:
@@ -79,10 +106,147 @@ def convert_pdf(path):
 
 def convert_docx(path):
     from docx import Document
+
+    OMML = 'http://schemas.openxmlformats.org/officeDocument/2006/math'
+    WORD = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'
+
+    def omml_to_text(elem):
+        tag = elem.tag.split('}')[-1] if '}' in elem.tag else elem.tag
+        ns  = elem.tag.split('}')[0].lstrip('{') if '}' in elem.tag else ''
+        if ns == WORD:
+            return ''
+        if tag == 't':
+            return elem.text or ''
+        elif tag == 'r':
+            return ''.join((c.text or '') for c in elem if c.tag.split('}')[-1] == 't')
+        elif tag == 'sSup':
+            base = sup = ''
+            for c in elem:
+                ct = c.tag.split('}')[-1]
+                if ct == 'e':    base = omml_to_text(c)
+                elif ct == 'sup': sup = omml_to_text(c)
+            return f'{base}^{sup}' if len(sup) <= 2 else f'{base}^({sup})'
+        elif tag == 'sSub':
+            base = sub = ''
+            for c in elem:
+                ct = c.tag.split('}')[-1]
+                if ct == 'e':    base = omml_to_text(c)
+                elif ct == 'sub': sub = omml_to_text(c)
+            return f'{base}_{sub}' if len(sub) <= 2 else f'{base}_({sub})'
+        elif tag == 'sSubSup':
+            base = sub = sup = ''
+            for c in elem:
+                ct = c.tag.split('}')[-1]
+                if ct == 'e':     base = omml_to_text(c)
+                elif ct == 'sub': sub  = omml_to_text(c)
+                elif ct == 'sup': sup  = omml_to_text(c)
+            return f'{base}_({sub})^({sup})'
+        elif tag == 'f':
+            num = den = ''
+            for c in elem:
+                ct = c.tag.split('}')[-1]
+                if ct == 'num': num = omml_to_text(c)
+                elif ct == 'den': den = omml_to_text(c)
+            return f'({num})/({den})'
+        elif tag == 'rad':
+            deg = content = ''; hidden = False
+            for c in elem:
+                ct = c.tag.split('}')[-1]
+                if ct == 'radPr':
+                    for gc in c:
+                        if gc.tag.split('}')[-1] == 'degHide':
+                            hidden = gc.get(f'{{{OMML}}}val','1') not in ('0','false','off')
+                elif ct == 'deg': deg = omml_to_text(c)
+                elif ct == 'e':   content = omml_to_text(c)
+            return f'√({content})' if hidden or not deg.strip() else f'{deg}√({content})'
+        elif tag == 'd':
+            beg, end = '(', ')'; contents = []
+            for c in elem:
+                ct = c.tag.split('}')[-1]
+                if ct == 'dPr':
+                    for gc in c:
+                        gct = gc.tag.split('}')[-1]
+                        if gct == 'begChr': beg = gc.get(f'{{{OMML}}}val','(') or ''
+                        elif gct == 'endChr': end = gc.get(f'{{{OMML}}}val',')') or ''
+                elif ct == 'e': contents.append(omml_to_text(c))
+            return f'{beg}{", ".join(contents)}{end}'
+        elif tag == 'nary':
+            op = '∫'; sub = sup = content = ''
+            for c in elem:
+                ct = c.tag.split('}')[-1]
+                if ct == 'naryPr':
+                    for gc in c:
+                        if gc.tag.split('}')[-1] == 'chr':
+                            op = gc.get(f'{{{OMML}}}val','∫') or '∫'
+                elif ct == 'sub': sub  = omml_to_text(c)
+                elif ct == 'sup': sup  = omml_to_text(c)
+                elif ct == 'e':   content = omml_to_text(c)
+            return f'{op}_{{{sub}}}^{{{sup}}} {content}' if (sub or sup) else f'{op} {content}'
+        elif tag == 'func':
+            fname = content = ''
+            for c in elem:
+                ct = c.tag.split('}')[-1]
+                if ct == 'fName': fname = omml_to_text(c)
+                elif ct == 'e':   content = omml_to_text(c)
+            return f'{fname}({content})'
+        elif tag == 'bar':
+            content = next((omml_to_text(c) for c in elem if c.tag.split('}')[-1]=='e'),'')
+            return f'{content}̅'
+        elif tag == 'acc':
+            return next((omml_to_text(c) for c in elem if c.tag.split('}')[-1]=='e'),'')
+        elif tag == 'limLow':
+            base = lim = ''
+            for c in elem:
+                ct = c.tag.split('}')[-1]
+                if ct == 'e': base = omml_to_text(c)
+                elif ct == 'lim': lim = omml_to_text(c)
+            return f'{base}_{{{lim}}}'
+        elif tag == 'limUpp':
+            base = lim = ''
+            for c in elem:
+                ct = c.tag.split('}')[-1]
+                if ct == 'e': base = omml_to_text(c)
+                elif ct == 'lim': lim = omml_to_text(c)
+            return f'{base}^{{{lim}}}'
+        elif tag == 'm':
+            rows = []
+            for c in elem:
+                if c.tag.split('}')[-1] == 'mr':
+                    cells = [omml_to_text(gc) for gc in c if gc.tag.split('}')[-1]=='e']
+                    rows.append('  '.join(cells))
+            return '[' + ' | '.join(rows) + ']'
+        elif tag == 'eqArr':
+            return '\n'.join(omml_to_text(c) for c in elem if c.tag.split('}')[-1]=='e')
+        elif tag in ('rPr','dPr','sSupPr','sSubPr','radPr','naryPr','fPr','barPr',
+                     'accPr','ctrlPr','mPr','mrPr','sty','limLoc','degHide',
+                     'sSubSupPr','groupChrPr','borderBoxPr','boxPr','eqArrPr','pPr'):
+            return ''
+        else:
+            return ''.join(omml_to_text(c) for c in elem)
+
+    def para_text_with_math(para_elem):
+        parts = []
+        for child in para_elem:
+            tag = child.tag.split('}')[-1] if '}' in child.tag else child.tag
+            ns  = child.tag.split('}')[0].lstrip('{') if '}' in child.tag else ''
+            if ns == OMML and tag in ('oMath','oMathPara'):
+                math = omml_to_text(child).strip()
+                if math:
+                    parts.append(f'`{math}`')
+            elif ns == WORD and tag == 'r':
+                for gc in child:
+                    if gc.tag.split('}')[-1] == 't':
+                        parts.append(gc.text or '')
+            else:
+                sub = para_text_with_math(child)
+                if sub:
+                    parts.append(sub)
+        return ''.join(parts)
+
     doc = Document(path)
     lines = []
     for para in doc.paragraphs:
-        text = para.text.strip()
+        text = para_text_with_math(para._element).strip()
         if not text:
             continue
         style = para.style.name if para.style else ""

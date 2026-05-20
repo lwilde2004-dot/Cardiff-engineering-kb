@@ -111,6 +111,15 @@ Key considerations when selecting a machining process:
 
 ---
 
+
+---
+
+## Key Diagrams
+
+![[EN1213/manufacturing-materials/raw/manufacturing-processes/assets/EN1213 - Manufacturing Electrical Discharge Machining - Ryan/page1-img1.jpeg]]
+
+![[EN1213/manufacturing-materials/raw/manufacturing-processes/assets/EN1213 - Manufacturing Electrical Discharge Machining - Ryan/page1-img2.jpeg]]
+
 ## Links
 
 - [[EN1213/manufacturing-materials/wiki/manufacturing-processes/conventional-machining|Conventional Machining]]

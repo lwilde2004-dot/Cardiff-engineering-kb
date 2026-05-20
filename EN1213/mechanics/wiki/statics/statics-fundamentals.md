@@ -112,6 +112,19 @@ A **distributed load** (e.g. force per unit length on a beam) is replaced by its
 
 ---
 
+
+---
+
+## Key Diagrams
+
+![[EN1213/mechanics/raw/statics/assets/EN1213 - Statics Moments and Torque - Wu/page1-img1.jpeg]]
+
+![[EN1213/mechanics/raw/statics/assets/EN1213 - Statics Moments and Torque - Wu/page6-img1.jpeg]]
+
+![[EN1213/mechanics/raw/statics/assets/EN1213 - Statics Forces and Resultants - Wu/page17-img1.png]]
+
+![[EN1213/mechanics/raw/statics/assets/EN1213 - Statics Forces and Resultants - Wu/page17-img2.png]]
+
 ## Links
 
 - [[EN1213/mechanics/wiki/statics/trusses-and-frames|Trusses and Frames]]

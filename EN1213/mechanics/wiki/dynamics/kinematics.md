@@ -106,6 +106,19 @@ An **open-loop kinematic chain** (e.g. robot arm) has one free end. The velocity
 
 ---
 
+
+---
+
+## Key Diagrams
+
+![[EN1213/mechanics/raw/dynamics/assets/EN1213 - Dynamics Circular Motion - McCrory/page1-img1.png]]
+
+![[EN1213/mechanics/raw/dynamics/assets/EN1213 - Dynamics Circular Motion - McCrory/page1-img2.jpeg]]
+
+![[EN1213/mechanics/raw/dynamics/assets/EN1213 - Dynamics General Plane Motion - McCrory/page1-img1.png]]
+
+![[EN1213/mechanics/raw/dynamics/assets/EN1213 - Dynamics General Plane Motion - McCrory/page1-img2.jpeg]]
+
 ## Links
 
 - [[EN1213/mechanics/wiki/dynamics/kinetics-and-rotating-systems|Kinetics and Rotating Systems]]

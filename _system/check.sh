@@ -142,7 +142,7 @@ echo "────────────────────────�
 
 expected=("EN1213 - Thermodynamics" "EN1213 - Fluid Mechanics" "EN1213 - Manufacturing and Materials" "EN1213 - Mechanics" "Maths" "General - Unsorted")
 for t in "${expected[@]}"; do
-  if [[ -f "$VAULT/_web-clipper-templates/$t.json" ]]; then
+  if [[ -f "$VAULT/_system/_web-clipper-templates/$t.json" ]]; then
     green "$t.json"
   else
     red "$t.json missing"

@@ -78,6 +78,15 @@ $$\sum F_y - p_2 A_2 = \dot{m}(-v_2 - 0)$$
 
 The [[dimensional-analysis|Reynolds number]] determines whether the ideal-fluid assumptions used here are reasonable for a given flow.
 
+
+---
+
+## Key Diagrams
+
+![[EN1213/thermodynamics-fluid-mechanics/raw/fluid-mechanics/momentum/assets/EN1213 - Momentum Equation Jets and Vanes - Allmark/slide5-img1026.jpg]]
+
+![[EN1213/thermodynamics-fluid-mechanics/raw/fluid-mechanics/momentum/assets/EN1213 - Momentum Equation Jets and Vanes - Allmark/slide10-img11273.jpg]]
+
 ## Links
 - [[fluid-properties]] — density appears in ṁ = ρAv; viscosity determines whether ideal-fluid assumptions hold
 - [[hydrostatics]] — pressure forces at inlet/outlet of a CV follow the same hydrostatic pressure principles

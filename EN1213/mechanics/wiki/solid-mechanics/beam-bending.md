@@ -93,6 +93,15 @@ Beam bending tests are used to determine material properties:
 
 ---
 
+
+---
+
+## Key Diagrams
+
+![[EN1213/mechanics/raw/solid-mechanics/assets/EN1213 - Solid Mechanics Beams Part 1 - Pearson/slide14-img6.png]]
+
+![[EN1213/mechanics/raw/solid-mechanics/assets/EN1213 - Solid Mechanics Beams Part 1 - Pearson/slide26-img53.png]]
+
 ## Links
 
 - [[EN1213/mechanics/wiki/solid-mechanics/stress-and-strain|Stress and Strain — Axial Loading]]

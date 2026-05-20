@@ -30,6 +30,9 @@ CONVERTIBLE = {".pptx", ".pdf", ".docx", ".xlsx", ".xls"}
 # ── Topic routing ──────────────────────────────────────────────────────────────
 
 ROUTES = [
+    (r"exam|past.paper|formula.sheet|revision|specimen.paper|mock|test.paper",
+     "EN1213/Exam papers/Year 1 Spring",
+     "exam-papers/year-1-spring"),
     (r"ideal.gas|first.law|sfee|nfee|rankine|carnot|entropy|reversib|steam.power|thermo(?!dynamic.?fluid)",
      "EN1213/thermodynamics-fluid-mechanics/raw/thermodynamics",
      "thermodynamics"),
@@ -176,9 +179,16 @@ class InboxHandler(FileSystemEventHandler):
         dest_folder, topic = route(name)
 
         if dest_folder is None:
-            print(f"\n  ⚠ Inbox: {path.name}")
-            print(f"  Could not auto-route. Run:")
-            print(f"  bash intake.sh \"{path}\"")
+            print(f"\n{'═'*54}")
+            print(f"  ⚠  NEW / UNRECOGNISED FILE IN INBOX")
+            print(f"  File: {path.name}")
+            print(f"")
+            print(f"  Doesn't match any existing subject folder.")
+            print(f"  File left in _inbox/ — run intake.sh to classify")
+            print(f"  (choose option 9 to create a new subject folder):")
+            print(f"")
+            print(f"  bash _system/intake.sh")
+            print(f"{'═'*54}")
             return
 
         # Build canonical filename

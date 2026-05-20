@@ -23,6 +23,8 @@ route_file() {
   local name_lower
   name_lower=$(echo "$1" | tr '[:upper:]' '[:lower:]')
 
+  if echo "$name_lower" | grep -qiE "exam|past.paper|formula.sheet|revision|specimen.paper|mock|test.paper"; then
+    echo "EN1213/Exam papers/Year 1 Spring"; return; fi
   if echo "$name_lower" | grep -qiE "ideal.gas|first.law|sfee|nfee|rankine|carnot|entropy|reversib|steam.cycle|steam.power|thermo"; then
     echo "EN1213/thermodynamics-fluid-mechanics/raw/thermodynamics"; return; fi
   if echo "$name_lower" | grep -qiE "fluid.mech|hydrostatic|bernoulli|manometer|pitot|venturi|viscosity|reynolds|laminar|turbulent|pipe.loss|weir|orifice|dimensional.anal|fluid.prop|pressure.meas|fm1|fm2"; then
@@ -79,9 +81,11 @@ select_topic_menu() {
   echo "    2) Fluid Mechanics       6) Manufacturing Processes" >&2
   echo "    3) Statics               7) Materials Science" >&2
   echo "    4) Solid Mechanics       8) Materials Testing" >&2
+  echo "" >&2
+  echo "    9) New subject — create a new folder" >&2
   echo "    0) Skip this file" >&2
   echo "" >&2
-  printf "  Choice [0-8]: " >&2
+  printf "  Choice [0-9]: " >&2
   read -r choice
   case "$choice" in
     1) echo "EN1213/thermodynamics-fluid-mechanics/raw/thermodynamics" ;;
@@ -92,6 +96,20 @@ select_topic_menu() {
     6) echo "EN1213/manufacturing-materials/raw/manufacturing-processes" ;;
     7) echo "EN1213/manufacturing-materials/raw/materials-science" ;;
     8) echo "EN1213/manufacturing-materials/raw/materials-testing" ;;
+    9)
+      echo "" >&2
+      echo "  What is this subject? (e.g. 'Chemistry' or 'Maths - Calculus')" >&2
+      printf "  Subject name: " >&2
+      read -r new_subject
+      local new_folder
+      new_folder=$(echo "$new_subject" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | tr '/' '-')
+      local new_path="EN1213/$new_folder/raw"
+      mkdir -p "$VAULT/$new_path"
+      echo "" >&2
+      echo "  ✓ Created: $new_path/" >&2
+      echo "  Tell Claude: 'Set up a wiki and formula sheet for $new_subject'" >&2
+      echo "$new_path"
+      ;;
     *) echo "" ;;
   esac
 }

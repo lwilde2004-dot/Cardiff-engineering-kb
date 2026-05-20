@@ -74,6 +74,15 @@ The angle of friction concept is particularly useful for wedge problems and scre
 
 ---
 
+
+---
+
+## Key Diagrams
+
+![[EN1213/mechanics/raw/statics/assets/EN1213 - Statics Friction and Dry Contact - Wu/slide4-img7.wmf]]
+
+![[EN1213/mechanics/raw/statics/assets/EN1213 - Statics Friction and Dry Contact - Wu/slide4-img9.png]]
+
 ## Links
 
 - [[EN1213/mechanics/wiki/statics/statics-fundamentals|Statics Fundamentals — Forces and Moments]]

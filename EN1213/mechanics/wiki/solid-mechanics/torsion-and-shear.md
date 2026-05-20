@@ -87,6 +87,19 @@ Under pure torsion, a stress element on the surface of the shaft experiences she
 
 ---
 
+
+---
+
+## Key Diagrams
+
+![[EN1213/mechanics/raw/solid-mechanics/assets/EN1213 - Solid Mechanics Torsion - Pearson/slide7-img5.png]]
+
+![[EN1213/mechanics/raw/solid-mechanics/assets/EN1213 - Solid Mechanics Torsion - Pearson/slide8-img5.png]]
+
+![[EN1213/mechanics/raw/solid-mechanics/assets/EN1213 - Solid Mechanics Shear Stress - Pearson/slide7-img5.png]]
+
+![[EN1213/mechanics/raw/solid-mechanics/assets/EN1213 - Solid Mechanics Shear Stress - Pearson/slide7-img7.png]]
+
 ## Links
 
 - [[EN1213/mechanics/wiki/solid-mechanics/stress-and-strain|Stress and Strain — Axial Loading]]

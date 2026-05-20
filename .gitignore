@@ -12,6 +12,15 @@ EN1213/**/raw/**/*.html
 # Converted lecture .md files (derived from source files)
 EN1213/**/raw/**/*.md
 
+# EN1211 source and converted files (copyright)
+EN1211/**/raw/**/*.pdf
+EN1211/**/raw/**/*.docx
+EN1211/**/raw/**/*.doc
+EN1211/**/raw/**/*.md
+
+# Exam papers (university copyright — adapt to your own institution)
+EN1213/Exam papers/
+
 # Extracted slide images
 **/assets/
 
@@ -28,11 +37,20 @@ _web-clips/maths/
 _system/_chat-logs/*
 !_system/_chat-logs/.gitkeep
 
+# Context docs contain personal info (email address etc.)
+_system/claude-desktop-context/
+
 _inbox/*
 !_inbox/.gitkeep
 
-# ── API keys — never commit ───────────────────────────────────────────────────
+# Generated daily content (personal)
+Daily Questions.md
+.daily-check.log
+.daily-questions.log
+
+# ── API keys and personal plugin data — never commit ─────────────────────────
 .obsidian/plugins/copilot/data.json
+.obsidian/plugins/obsidian-spaced-repetition/data.json
 
 # ── Watcher runtime files ─────────────────────────────────────────────────────
 .watcher.pid

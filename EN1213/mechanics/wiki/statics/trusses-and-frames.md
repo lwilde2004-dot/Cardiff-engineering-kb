@@ -77,6 +77,15 @@ Internal pin forces often have both x and y components and must be included as u
 
 ---
 
+
+---
+
+## Key Diagrams
+
+![[EN1213/mechanics/raw/statics/assets/EN1213 - Statics Trusses and Frames - Wu/page1-img1.jpeg]]
+
+![[EN1213/mechanics/raw/statics/assets/EN1213 - Statics Trusses and Frames - Wu/page3-img2.png]]
+
 ## Links
 
 - [[EN1213/mechanics/wiki/statics/statics-fundamentals|Statics Fundamentals — Forces and Moments]]

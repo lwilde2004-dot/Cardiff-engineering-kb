@@ -82,6 +82,15 @@ $$v = \sqrt{\frac{2(p_{stagnation} - p_{static})}{\rho}}$$
 
 For pipe bends, use Bernoulli to find p₂ first, then apply the [[momentum|momentum equation]] for forces.
 
+
+---
+
+## Key Diagrams
+
+![[EN1213/thermodynamics-fluid-mechanics/raw/fluid-mechanics/bernoullis/assets/EN1213 - Continuity and Bernoullis Equation - Mashruk/slide4-img8196.jpg]]
+
+![[EN1213/thermodynamics-fluid-mechanics/raw/fluid-mechanics/bernoullis/assets/EN1213 - Continuity and Bernoullis Equation - Mashruk/slide5-img7.jpg]]
+
 ## Links
 - [[hydrostatics]] — Bernoulli is the dynamic extension of hydrostatics; at v=0 it reduces to p = p_atm + ρgz
 - [[fluid-properties]] — fluid density (ρ) appears in every form of the equation; viscosity explains why C_d < 1

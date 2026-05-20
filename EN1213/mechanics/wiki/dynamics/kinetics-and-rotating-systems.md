@@ -118,6 +118,15 @@ Apply FBD methodology to rotating systems:
 
 ---
 
+
+---
+
+## Key Diagrams
+
+![[EN1213/mechanics/raw/dynamics/assets/EN1213 - Dynamics Rotating Systems and Gear Ratios - McCrory/page1-img1.png]]
+
+![[EN1213/mechanics/raw/dynamics/assets/EN1213 - Dynamics Rotating Systems and Gear Ratios - McCrory/page1-img2.jpeg]]
+
 ## Links
 
 - [[EN1213/mechanics/wiki/dynamics/kinematics|Kinematics — Vector Differentiation and Circular Motion]]

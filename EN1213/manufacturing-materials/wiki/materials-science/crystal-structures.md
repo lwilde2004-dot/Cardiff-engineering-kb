@@ -91,6 +91,15 @@ All strengthening mechanisms work by **impeding dislocation movement**:
 
 ---
 
+
+---
+
+## Key Diagrams
+
+![[EN1213/manufacturing-materials/raw/materials-science/assets/EN1213 - Materials Crystal Structures and Defects - Eaton/page4-img1.png]]
+
+![[EN1213/manufacturing-materials/raw/materials-science/assets/EN1213 - Materials Crystal Structures and Defects - Eaton/page5-img1.png]]
+
 ## Links
 
 - [[EN1213/manufacturing-materials/wiki/materials-science/atomic-structure-and-bonding|Atomic Structure and Bonding]]

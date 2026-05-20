@@ -80,6 +80,15 @@ Integrating pressure over a curved surface is complex. Instead, use equilibrium 
 | Circle (radius R) | πR⁴/4 |
 | Triangle (base b, height h) | bh³/36 |
 
+
+---
+
+## Key Diagrams
+
+![[EN1213/thermodynamics-fluid-mechanics/raw/fluid-mechanics/hydrostatics/assets/EN1213 - Hydrostatics and Submerged Surfaces - Mashruk/slide5-img3.png]]
+
+![[EN1213/thermodynamics-fluid-mechanics/raw/fluid-mechanics/hydrostatics/assets/EN1213 - Hydrostatics and Submerged Surfaces - Mashruk/slide13-img25603.png]]
+
 ## Links
 - [[fluid-properties]] — fluid density ρ is the key input to all hydrostatic force and pressure calculations
 - [[pressure-measurement]] — manometers use the hydrostatic pressure equation p = p_atm + ρgz directly
